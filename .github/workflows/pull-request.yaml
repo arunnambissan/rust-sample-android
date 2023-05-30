@@ -44,5 +44,5 @@ jobs:
         continue-on-error: true
         run: |
           cargo install cargo-ndk
-          cd native && \
+          cd rust && \
           cargo clippy --target=aarch64-linux-android -- -D warnings
