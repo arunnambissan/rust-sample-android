@@ -36,7 +36,8 @@ jobs:
       - name: ls toolchains
         run: |
           rustup target add aarch64-linux-android
-          ls /usr/local/lib/android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/
+          echo 
+          ls /usr/local/lib/android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/linux-x86_64/
           rustup target list | grep installed
 
       - name: Lint check for rust Android
