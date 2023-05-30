@@ -110,13 +110,13 @@ fi
 # See: https://github.com/rust-windowing/android-ndk-rs/blob/master/ndk-build/src/cargo.rs
 #
 # The RUSTFLAGS variable sets up the linking path (tells rustc where to look for dependencies).
-env \
-	"AR_${RUST_TARGET}=${TOOL_PREFIX}-ar" \
-	"CC_${RUST_TARGET}=${COMPILER_PREFIX}-clang" \
-	"CARGO_TARGET_${RUST_TARGET_CAPS}_LINKER=${COMPILER_PREFIX}-clang" \
-	"RUSTFLAGS=-L ${LIBS_DIR}" \
-	cargo build ${RELEASE_FLAG} --lib \
-		--target="${RUST_TARGET}" \
-		--target-dir="${BUILD_DIR}"
+# env \
+# 	"AR_${RUST_TARGET}=${TOOL_PREFIX}-ar" \
+# 	"CC_${RUST_TARGET}=${COMPILER_PREFIX}-clang" \
+# 	"CARGO_TARGET_${RUST_TARGET_CAPS}_LINKER=${COMPILER_PREFIX}-clang" \
+# 	"RUSTFLAGS=-L ${LIBS_DIR}" \
+# 	cargo build ${RELEASE_FLAG} --lib \
+# 		--target="${RUST_TARGET}" \
+# 		--target-dir="${BUILD_DIR}"
 
-cp -a "${TARGET_DIR}/librpn.so" "${LIBS_DIR}/librpn.so"
+# cp -a "${TARGET_DIR}/librpn.so" "${LIBS_DIR}/librpn.so"

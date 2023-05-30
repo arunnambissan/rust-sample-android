@@ -110,7 +110,7 @@ COMPILER_PREFIX="${TOOLCHAIN}/bin/${HOST}${ANDROID_API}"
 
 export AR="${TOOL_PREFIX}-ar"
 export AS="${TOOL_PREFIX}-as"
-export CC="${COMPILER_PREFIX}-clang"
+# export CC="${COMPILER_PREFIX}-clang"
 export LD="${TOOL_PREFIX}-ld"
 export RANLIB="${TOOL_PREFIX}-ranlib"
 export STRIP="${TOOL_PREFIX}-strip"
