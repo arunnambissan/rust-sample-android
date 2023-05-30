@@ -43,6 +43,5 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         continue-on-error: true
         run: |
-          cargo install cargo-ndk
           cd rust && \
           cargo clippy --target=aarch64-linux-android -- -D warnings
