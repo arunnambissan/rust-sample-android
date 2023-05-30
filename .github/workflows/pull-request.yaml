@@ -1,0 +1,48 @@
+name: Pull requests validation
+on:
+  # pull_request:
+  #   branches:
+  #     - github-actions
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "release_version"
+        required: true
+        default: "1"
+
+jobs:
+  format_checks:
+    name: Code formatting
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup RUST
+        run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path --profile minimal -y
+      - name: RUST iOS architecture setup
+        run: rustup target add aarch64-apple-ios x86_64-apple-ios
+      # - name: Setup Dart
+      #   uses: dart-lang/setup-dart@v1
+      #   with:
+      #     sdk: '3.0.0'
+
+      - name: Debug print ANDROID_NDK_HOME
+        run: echo $ANDROID_NDK_HOME
+      - name: Debug print ANDROID_HOME
+        run: echo $ANDROID_HOME
+      - name: ls toolchains
+        run: |
+          ls /usr/local/lib/android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/
+          rustup target list | grep installed
+
+      - name: Lint check for rust Android
+        if: matrix.os == 'ubuntu-latest'
+        continue-on-error: true
+        run: |
+          cargo install cargo-ndk
+          cd native && \
+          rustup target add aarch64-linux-android
+          cargo clippy --target=aarch64-linux-android -- -D warnings
