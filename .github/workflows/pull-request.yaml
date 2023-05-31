@@ -36,7 +36,6 @@ jobs:
       - name: ls toolchains
         run: |
           rustup target add aarch64-linux-android
-          echo 
           ls /usr/local/lib/android/sdk/ndk/25.2.9519653/toolchains/llvm/prebuilt/linux-x86_64/bin
           rustup target list | grep installed
 

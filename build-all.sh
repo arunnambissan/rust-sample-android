@@ -44,9 +44,9 @@ function build_arch() {
 	"${SCRIPT_DIR}/build-librpn.sh" ${FLAGS}
 }
 
-build_arch aarch64 "$@"
-build_arch armv7 "$@"
-build_arch x86_64 "$@"
+# build_arch aarch64 "$@"
+# build_arch armv7 "$@"
+# build_arch x86_64 "$@"
 
 "${SCRIPT_DIR}/build-apk.sh" ${CLEAN} \
 	--build-dir ./build \
